@@ -15,7 +15,10 @@ def handel_client (conn, addr) :
    print(f"[New Connection] {addr} Connected")
    connected = True
    while connected :
-       msg=conn.recv(HEADER).decode(FORMAT)
+       msg_len=conn.recv(HEADER).decode(FORMAT)
+       msg_len=int(msg_len)
+       msg=conn.recv(msg_len).decode(FORMAT)
+       print(f"[{addr}]  {msg}")
        
    
 
